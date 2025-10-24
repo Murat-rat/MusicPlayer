@@ -15,6 +15,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.musicplayer.ui.components.ImagenCircular
+import com.example.musicplayer.ui.components.TextoTitulo
+import com.example.musicplayer.R
+import com.example.musicplayer.ui.components.Button
+import com.example.musicplayer.ui.components.InputField
+import com.example.musicplayer.ui.components.Link
+import com.example.musicplayer.ui.theme.MusicPlayerTheme
+import com.example.musicplayer.viewmodel.LoginViewModel
+
 
 @Composable
 fun LoginScreen(viewModel: LoginViewModel, navController: NavController) {
@@ -27,15 +36,15 @@ fun LoginScreen(viewModel: LoginViewModel, navController: NavController) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(20.dp, Alignment.CenterVertically)
     ) {
-        CircularImage(R.drawable.music)
-        Title("Aplicación\nMóvil")
+        ImagenCircular(R.drawable.music)
+        TextoTitulo("Aplicación\nMóvil")
 
-        UserInputField(
+        InputField(
             viewModel = viewModel,
             label = "Usuario"
         )
 
-        PasswordField(
+        InputField(
             viewModel = viewModel,
             label = "Contraseña"
         )
@@ -52,7 +61,7 @@ fun LoginScreen(viewModel: LoginViewModel, navController: NavController) {
             navController.navigate("forgot_password")
         }
 
-        PrimaryButton("Iniciar sesión") {
+        Button ("Iniciar sesión") {
             viewModel.login {
                 navController.navigate("calculator") {
                     popUpTo("login") { inclusive = true } // Evita volver al login
@@ -60,7 +69,7 @@ fun LoginScreen(viewModel: LoginViewModel, navController: NavController) {
             }
         }
 
-        Link("¿No tienes cuenta? Regístrate") {
+        Link ("¿No tienes cuenta? Regístrate") {
             navController.navigate("register")
         }
 
@@ -72,7 +81,7 @@ fun LoginScreen(viewModel: LoginViewModel, navController: NavController) {
 @Preview(showBackground = true)
 @Composable
 fun PreviewLoginScreen() {
-    CalculadoraMVVMTheme {
+    MusicPlayerTheme {
         val navController = rememberNavController()
         val viewModel = LoginViewModel()
 
