@@ -7,7 +7,7 @@ data class Cancion (
     val nombre: String,
     val album: String,
     val artista: String,
-    val descripcion: String,
+    val descripcion: String = "",
     @DrawableRes val image: Int
 
 )
