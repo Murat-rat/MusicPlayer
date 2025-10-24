@@ -12,9 +12,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.musicplayer.ui.components.Button
 import com.example.musicplayer.ui.components.InputField
-import com.example.musicplayer.ui.components.TextField
-import com.example.musicplayer.ui.components.TextoSubtitulo
 import com.example.musicplayer.ui.components.TextoTitulo
+import com.example.musicplayer.viewmodel.RecupContraViewModel
 
 @Composable
 fun RecupContraScreen(viewModel: RecupContraViewModel, navController: NavController) {

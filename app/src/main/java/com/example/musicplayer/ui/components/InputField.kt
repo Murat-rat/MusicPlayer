@@ -9,11 +9,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.ImeAction
-import com.example.musicplayer.viewmodel.LoginViewModel
+import com.example.musicplayer.viewmodel.RecupContraViewModel
 
 @Composable
 fun InputField(
-    viewModel: LoginViewModel,
+    viewModel: RecupContraViewModel,
     label: String = "",
     onNext: (() -> Unit)? = null
 ) {
