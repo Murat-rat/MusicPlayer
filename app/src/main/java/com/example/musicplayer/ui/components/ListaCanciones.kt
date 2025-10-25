@@ -4,8 +4,11 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.musicplayer.R
 import com.example.musicplayer.data.model.Cancion
+import com.example.musicplayer.ui.theme.MusicPlayerTheme
 
 @Composable
 fun ListaCanciones(lista: List<Cancion>, x: (Cancion) -> Unit) {
@@ -15,5 +18,20 @@ fun ListaCanciones(lista: List<Cancion>, x: (Cancion) -> Unit) {
         items(items = lista, key = {it.id} ) {cancion ->
             CancionCard(cancion) { x(cancion) }
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewListaCanciones(){
+    val lista = listOf(
+        Cancion(1, "Yes I'm a Mess", "The Maybe Man", "AJR", "3ra canción del álbum", R.drawable.maybeman),
+        Cancion(2, "Satisfied", "Hamilton", "Lin Manuel Miranda", "He will never be satisfied", R.drawable.hamilton),
+        Cancion(3, "Karma", "Neotheater", "AJR", "If only I could keep you in my pocket...", R.drawable.neotheater),
+
+
+        )
+    MusicPlayerTheme {
+        ListaCanciones(lista) { }
     }
 }

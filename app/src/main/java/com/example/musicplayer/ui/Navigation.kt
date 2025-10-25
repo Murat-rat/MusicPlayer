@@ -1,47 +1,35 @@
 package com.example.musicplayer.ui
 
 import androidx.compose.runtime.Composable
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.musicplayer.ui.screens.LoginScreen
+import com.example.musicplayer.ui.screens.MenuScreen
+import com.example.musicplayer.ui.screens.RecupContraScreen
 import com.example.musicplayer.viewmodel.LoginViewModel
+import com.example.musicplayer.viewmodel.MenuPrincipalViewModel
+import com.example.musicplayer.viewmodel.RecupContraViewModel
 
 @Composable
 fun Navigation() {
-
-    val navController =
-
-        rememberNavController()
+    val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = "login") {
         composable("login") {
             val viewModel: LoginViewModel = viewModel() // instancia del ViewModel
             LoginScreen(viewModel = viewModel, navController = navController)
         }
-        composable("forgot_password") { ForgotPasswordScreen(navController) }
-        composable("register") { RegisterScreen(navController) }
-        composable("home") { HomeScreen(navController) }
-        composable("calculator") {
-            val viewModel: CalculatorViewModel = viewModel() // instancia del ViewModel
-            CalculatorScreen(viewModel = viewModel, navController = navController)
-        }
-        composable("tictactoe") {
-            val viewModel: TicTacToeViewModel = viewModel() // instancia del ViewModel
-            TicTacToeScreen(viewModel = viewModel, navController = navController)
-        }
-        composable("incubadora") {
-            val viewModel: IncubadoraViewModel = viewModel() // instancia del ViewModel
-            IncubadoraScreen(viewModel = viewModel, navController = navController)
-        }
+        //Nuevas rutas aca
         composable("menu") {
-            val viewModel: MenuViewModel = viewModel() // instancia del ViewModel
+            val viewModel: MenuPrincipalViewModel = viewModel() // instancia del ViewModel
             MenuScreen(viewModel = viewModel, navController = navController)
         }
-        composable("verUsuarios"){
-            val viewModel: UserListViewModel = viewModel()
-            UserScreen(viewModel, navController=navController)
+
+        composable("recuperar") {
+            val viewModel: RecupContraViewModel = viewModel() // instancia del ViewModel
+            RecupContraScreen(viewModel = viewModel, navController = navController)
         }
-        composable("verLicencia"){
-            val viewModel: LicenciaViewModel = viewModel()
-            LicenciaScreen(viewModel, navController=navController)
-        }
-        //Nuevas rutas aca
     }
 }

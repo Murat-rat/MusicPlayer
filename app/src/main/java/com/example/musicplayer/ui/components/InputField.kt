@@ -13,15 +13,15 @@ import com.example.musicplayer.viewmodel.RecupContraViewModel
 
 @Composable
 fun InputField(
-    viewModel: RecupContraViewModel,
+    value: String,
+    onValueChange: (String) -> Unit,
     label: String = "",
     onNext: (() -> Unit)? = null
 ) {
     val focusManager = LocalFocusManager.current
-
     OutlinedTextField(
-        value = viewModel.username.value,
-        onValueChange = { viewModel.username.value = it },
+        value = value,
+        onValueChange = onValueChange,
         label = { Text(label) },
         modifier = Modifier.fillMaxWidth(),
         singleLine = true,

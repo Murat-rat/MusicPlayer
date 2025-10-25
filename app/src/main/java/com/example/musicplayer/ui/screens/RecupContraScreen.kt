@@ -1,4 +1,4 @@
-package com.example.musicplayer.ui.screen
+package com.example.musicplayer.ui.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.musicplayer.ui.components.Button
 import com.example.musicplayer.ui.components.InputField
 import com.example.musicplayer.ui.components.TextoTitulo
@@ -29,25 +30,30 @@ fun RecupContraScreen(viewModel: RecupContraViewModel, navController: NavControl
         TextoTitulo("Recuperar Contraseña")
 
         InputField(
-            viewModel = viewModel,
+            value = viewModel.correo.value,
+            onValueChange = { viewModel.correo.value = it },
             label = "Correo"
         )
 
         InputField(
-            viewModel = viewModel,
+            value = viewModel.nuevacontra.value,
+            onValueChange = { viewModel.nuevacontra.value = it },
             label = "Nueva Contraseña"
         )
 
         InputField(
-            viewModel = viewModel,
+            value = viewModel.confirmarcontra.value,
+            onValueChange = { viewModel.confirmarcontra.value = it },
             label = "Confirmar Contraseña"
         )
 
-        Button ("Aceptar") {
-            viewModel.RecupContra {
-                navController.navigate("recupcontra") {
-                    popUpTo("login") { inclusive = true } // Evita volver al login
-                }
+        Button("Aceptar") {
+            navController.navigate("login") {
+                popUpTo("login") { inclusive = true } // Evita volver al login
+            }
+            viewModel.recupContra {
+
             }
         }
     }
+}

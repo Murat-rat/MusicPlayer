@@ -1,4 +1,4 @@
-package com.example.musicplayer.ui.screen
+package com.example.musicplayer.ui.screens
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Arrangement
@@ -15,6 +15,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.musicplayer.ui.components.ImagenCircular
 import com.example.musicplayer.ui.components.TextoTitulo
 import com.example.musicplayer.R
@@ -23,7 +25,6 @@ import com.example.musicplayer.ui.components.InputField
 import com.example.musicplayer.ui.components.Link
 import com.example.musicplayer.ui.theme.MusicPlayerTheme
 import com.example.musicplayer.viewmodel.LoginViewModel
-
 
 @Composable
 fun LoginScreen(viewModel: LoginViewModel, navController: NavController) {
@@ -40,12 +41,14 @@ fun LoginScreen(viewModel: LoginViewModel, navController: NavController) {
         TextoTitulo("Aplicación\nMóvil")
 
         InputField(
-            viewModel = viewModel,
+            value = viewModel.username.value,
+            onValueChange = { viewModel.username.value = it },
             label = "Usuario"
         )
 
         InputField(
-            viewModel = viewModel,
+            value = viewModel.password.value,
+            onValueChange = { viewModel.password.value = it },
             label = "Contraseña"
         )
 
@@ -58,12 +61,12 @@ fun LoginScreen(viewModel: LoginViewModel, navController: NavController) {
         }
 
         Link("¿Olvidaste tu contraseña?") {
-            navController.navigate("forgot_password")
+            navController.navigate("recuperar")
         }
 
         Button ("Iniciar sesión") {
             viewModel.login {
-                navController.navigate("calculator") {
+                navController.navigate("menu") {
                     popUpTo("login") { inclusive = true } // Evita volver al login
                 }
             }
