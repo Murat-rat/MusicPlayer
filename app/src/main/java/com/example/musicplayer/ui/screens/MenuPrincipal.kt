@@ -11,7 +11,7 @@ import com.example.musicplayer.viewmodel.MenuPrincipalViewModel
 
 
 @Composable
-fun ConductorScreen(viewModel: MenuPrincipalViewModel){
+fun MenuScreen(viewModel: MenuPrincipalViewModel){
     Column{
         TextoTitulo("Usuarios registrados")
         val cancion by viewModel.cancion.collectAsStateWithLifecycle()
