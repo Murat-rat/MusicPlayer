@@ -6,11 +6,16 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.musicplayer.R
+import com.example.musicplayer.ui.components.BotonIconoCuadrado
 import com.example.musicplayer.ui.components.Button
 import com.example.musicplayer.ui.components.InputField
 import com.example.musicplayer.ui.components.TextoTitulo
@@ -18,6 +23,12 @@ import com.example.musicplayer.viewmodel.RecupContraViewModel
 
 @Composable
 fun RecupContraScreen(viewModel: RecupContraViewModel, navController: NavController) {
+    Column(
+        modifier = Modifier
+            .padding(top = 55.dp, start = 20.dp)
+    ) {
+        BotonIconoCuadrado(R.drawable.regresar, 45, {navController.navigate("login")})
+    }
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -47,12 +58,19 @@ fun RecupContraScreen(viewModel: RecupContraViewModel, navController: NavControl
             label = "Confirmar Contraseña"
         )
 
-        Button("Aceptar") {
-            navController.navigate("login") {
-                popUpTo("login") { inclusive = true } // Evita volver al login
-            }
-            viewModel.recupContra {
+        if (viewModel.loginError.value.isNotEmpty()) {
+            Text(
+                text = viewModel.loginError.value,
+                color = Color.Red,
+                style = MaterialTheme.typography.bodyMedium
+            )
+        }
 
+        Button("Aceptar") {
+            viewModel.recupContra {
+                navController.navigate("login") {
+                    popUpTo("login") { inclusive = true } // Evita volver al login
+                }
             }
         }
     }

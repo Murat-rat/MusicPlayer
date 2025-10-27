@@ -38,7 +38,7 @@ fun LoginScreen(viewModel: LoginViewModel, navController: NavController) {
         verticalArrangement = Arrangement.spacedBy(20.dp, Alignment.CenterVertically)
     ) {
         ImagenCircular(R.drawable.music)
-        TextoTitulo("Aplicación\nMóvil")
+        TextoTitulo("Inicio de Sesión")
 
         InputField(
             value = viewModel.username.value,

@@ -5,9 +5,11 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.musicplayer.ui.screens.CancionActualScreen
 import com.example.musicplayer.ui.screens.LoginScreen
 import com.example.musicplayer.ui.screens.MenuScreen
 import com.example.musicplayer.ui.screens.RecupContraScreen
+import com.example.musicplayer.viewmodel.CancionActualViewModel
 import com.example.musicplayer.viewmodel.LoginViewModel
 import com.example.musicplayer.viewmodel.MenuPrincipalViewModel
 import com.example.musicplayer.viewmodel.RecupContraViewModel
@@ -23,13 +25,18 @@ fun Navigation() {
         }
         //Nuevas rutas aca
         composable("menu") {
-            val viewModel: MenuPrincipalViewModel = viewModel() // instancia del ViewModel
+            val viewModel: MenuPrincipalViewModel = viewModel()
             MenuScreen(viewModel = viewModel, navController = navController)
         }
 
         composable("recuperar") {
-            val viewModel: RecupContraViewModel = viewModel() // instancia del ViewModel
+            val viewModel: RecupContraViewModel = viewModel()
             RecupContraScreen(viewModel = viewModel, navController = navController)
+        }
+
+        composable("actual") {
+            val viewModel: CancionActualViewModel = viewModel()
+            CancionActualScreen(viewModel = viewModel, navController = navController)
         }
     }
 }

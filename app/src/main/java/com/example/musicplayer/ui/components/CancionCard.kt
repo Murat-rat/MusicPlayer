@@ -1,6 +1,6 @@
 package com.example.musicplayer.ui.components
 
-import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -22,16 +22,17 @@ import com.example.musicplayer.ui.theme.MusicPlayerTheme
 import com.example.musicplayer.R
 
 @Composable
-fun CancionCard(cancion: Cancion, x: (Cancion) -> Unit) {
+fun CancionCard(cancion: Cancion, onClick: () -> Unit) {
     Card(modifier = Modifier
         .fillMaxWidth()
         .height(130.dp)
+        .clickable{ onClick() }
     ) {
         Row(modifier = Modifier
             .padding(5.dp),
             horizontalArrangement = Arrangement.spacedBy(10.dp)
         ) {
-            ImagenPortada(cancion)
+            ImagenPortada(cancion.image, 120)
 
             Column(modifier = Modifier.padding(top = 5.dp)) {
                 TextoSubtitulo(cancion.nombre)
