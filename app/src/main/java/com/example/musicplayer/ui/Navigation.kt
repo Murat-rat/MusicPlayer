@@ -9,10 +9,12 @@ import com.example.musicplayer.ui.screens.CancionActualScreen
 import com.example.musicplayer.ui.screens.LoginScreen
 import com.example.musicplayer.ui.screens.MenuScreen
 import com.example.musicplayer.ui.screens.RecupContraScreen
+import com.example.musicplayer.ui.screens.RegistrarScreen
 import com.example.musicplayer.viewmodel.CancionActualViewModel
 import com.example.musicplayer.viewmodel.LoginViewModel
 import com.example.musicplayer.viewmodel.MenuPrincipalViewModel
 import com.example.musicplayer.viewmodel.RecupContraViewModel
+import com.example.musicplayer.viewmodel.RegistrarViewModel
 
 @Composable
 fun Navigation() {
@@ -37,6 +39,11 @@ fun Navigation() {
         composable("actual") {
             val viewModel: CancionActualViewModel = viewModel()
             CancionActualScreen(viewModel = viewModel, navController = navController)
+        }
+
+        composable("registrar") {
+            val viewModel: RegistrarViewModel = viewModel()
+            RegistrarScreen(viewModel = viewModel, navController = navController)
         }
     }
 }
