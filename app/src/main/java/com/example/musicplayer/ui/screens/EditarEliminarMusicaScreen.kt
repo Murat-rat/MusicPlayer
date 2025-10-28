@@ -56,7 +56,7 @@ fun EditarEliminarMusicaScreen(
 
         Spacer(modifier = Modifier.height(50.dp))
 
-        ImagenPortada(R.drawable.music, 100)
+        ImagenPortada(R.drawable.hamilton, 100)
 
         Spacer(modifier = Modifier.height(20.dp))
 

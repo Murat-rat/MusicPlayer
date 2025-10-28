@@ -2,6 +2,7 @@ package com.example.musicplayer.ui.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -40,6 +41,20 @@ fun RegistrarScreen(viewModel: RegistrarViewModel, navController: NavController)
         verticalArrangement = Arrangement.spacedBy(20.dp, Alignment.CenterVertically)
     ) {
         TextoTitulo("Registrarse")
+
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Button("Inicio de sesión")  {
+                    navController.navigate("login")
+            }
+
+            Button("Regístrate") {
+                navController.navigate("register")
+            }
+        }
 
         InputField(
             value = viewModel.nombre.value,
