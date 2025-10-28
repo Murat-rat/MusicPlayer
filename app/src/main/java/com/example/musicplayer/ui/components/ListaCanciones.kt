@@ -13,13 +13,13 @@ import com.example.musicplayer.data.model.Cancion
 import com.example.musicplayer.ui.theme.MusicPlayerTheme
 
 @Composable
-fun ListaCanciones(lista: List<Cancion>, onClick: () -> Unit) {
+fun ListaCanciones(lista: List<Cancion>, onClick: () -> Unit, edit: () -> Unit) {
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(10.dp),
         modifier = Modifier.height(700.dp)
     ) {
         items(items = lista, key = {it.id} ) {cancion ->
-            CancionCard(cancion) { onClick() }
+            CancionCard(cancion,  { onClick() }, { edit() })
         }
     }
 }
@@ -35,6 +35,6 @@ fun PreviewListaCanciones(){
 
         )
     MusicPlayerTheme {
-        ListaCanciones(lista) { }
+        ListaCanciones(lista, { }, { })
     }
 }

@@ -7,12 +7,14 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.musicplayer.ui.screens.AgregarMusicaScreen
 import com.example.musicplayer.ui.screens.CancionActualScreen
+import com.example.musicplayer.ui.screens.EditarEliminarMusicaScreen
 import com.example.musicplayer.ui.screens.LoginScreen
 import com.example.musicplayer.ui.screens.MenuScreen
 import com.example.musicplayer.ui.screens.RecupContraScreen
 import com.example.musicplayer.ui.screens.RegistrarScreen
 import com.example.musicplayer.viewmodel.AgregarMusicaViewModel
 import com.example.musicplayer.viewmodel.CancionActualViewModel
+import com.example.musicplayer.viewmodel.EditarEliminarMusicaViewModel
 import com.example.musicplayer.viewmodel.LoginViewModel
 import com.example.musicplayer.viewmodel.MenuPrincipalViewModel
 import com.example.musicplayer.viewmodel.RecupContraViewModel
@@ -43,7 +45,7 @@ fun Navigation() {
             CancionActualScreen(viewModel = viewModel, navController = navController)
         }
 
-        composable("registrar") {
+        composable("register") {
             val viewModel: RegistrarViewModel = viewModel()
             RegistrarScreen(viewModel = viewModel, navController = navController)
         }
@@ -54,8 +56,8 @@ fun Navigation() {
         }
 
         composable("editarMusica") {
-            val viewModel: AgregarMusicaViewModel = viewModel()
-            AgregarMusicaScreen(viewModel = viewModel, navController = navController)
+            val viewModel: EditarEliminarMusicaViewModel = viewModel()
+            EditarEliminarMusicaScreen(viewModel = viewModel, navController = navController)
         }
     }
 }

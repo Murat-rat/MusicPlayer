@@ -13,19 +13,13 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -34,6 +28,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.musicplayer.R // Asegúrate de que este R.drawable.folder exista
 import com.example.musicplayer.ui.components.BotonIconoCuadrado
+import com.example.musicplayer.ui.components.ImagenPortada
 import com.example.musicplayer.ui.components.InputField
 import com.example.musicplayer.ui.theme.MusicPlayerTheme
 import com.example.musicplayer.viewmodel.AgregarMusicaViewModel
@@ -48,7 +43,7 @@ fun EditarEliminarMusicaScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp),
+            .padding(top = 40.dp, start = 16.dp, end = 16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         // Fila superior: Botón de regreso
@@ -59,18 +54,9 @@ fun EditarEliminarMusicaScreen(
             BotonIconoCuadrado(R.drawable.regresar, 45, {navController.navigate("menu")})
         }
 
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(50.dp))
 
-        // Placeholder para Imagen (El cuadrado con una X)
-        Box(
-            modifier = Modifier
-                .size(100.dp)
-                .border(2.dp, Color.Black)
-                .padding(8.dp),
-            contentAlignment = Alignment.Center
-        ) {
-            Text(text = "X", fontSize = 40.sp, color = Color.Gray)
-        }
+        ImagenPortada(R.drawable.music, 100)
 
         Spacer(modifier = Modifier.height(20.dp))
 
@@ -83,7 +69,8 @@ fun EditarEliminarMusicaScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp),
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(5.dp)
         ) {
             Box(
                 modifier = Modifier
@@ -96,13 +83,7 @@ fun EditarEliminarMusicaScreen(
             ) {
                 Text(text = viewModel.archivo.value, color = Color.DarkGray)
             }
-            IconButton(
-                onClick = { /* Lógica para abrir selector de archivos */ },
-                modifier = Modifier.padding(start = 8.dp)
-            ) {
-                // Asumo que R.drawable.folder es el ícono de carpeta
-                Icon(painterResource(R.drawable.folder), contentDescription = "Seleccionar Archivo")
-            }
+            BotonIconoCuadrado(R.drawable.folder, 55, { })
         }
 
         Spacer(modifier = Modifier.height(16.dp))

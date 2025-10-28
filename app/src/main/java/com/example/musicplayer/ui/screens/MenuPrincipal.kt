@@ -45,7 +45,7 @@ fun MenuScreen(viewModel: MenuPrincipalViewModel, navController: NavController){
             BotonIconoRedondo(R.drawable.agregar, 45, { navController.navigate("agregarMusica") }, Color(40,66,245))
         }
         val cancion by viewModel.cancion.collectAsStateWithLifecycle()
-        ListaCanciones (cancion) { navController.navigate("actual") }
+        ListaCanciones (cancion,{ navController.navigate("actual") }, { navController.navigate("editarMusica") })
 
         Row (
             horizontalArrangement = Arrangement.spacedBy(10.dp),
