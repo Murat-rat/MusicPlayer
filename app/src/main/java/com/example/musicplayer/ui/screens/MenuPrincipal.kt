@@ -41,7 +41,8 @@ fun MenuScreen(viewModel: MenuPrincipalViewModel, navController: NavController){
         ) {
             BotonIconoCuadrado(R.drawable.exit, 45, {navController.navigate("login")})
             TextoTitulo("Mis Canciones")
-            BotonIconoRedondo(R.drawable.agregar, 45, {}, Color(40,66,245))
+            //AQUI FALTA AGREGAR AL NAVIGATION
+            BotonIconoRedondo(R.drawable.agregar, 45, { navController.navigate("agregarMusica") }, Color(40,66,245))
         }
         val cancion by viewModel.cancion.collectAsStateWithLifecycle()
         ListaCanciones (cancion) { navController.navigate("actual") }
