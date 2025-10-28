@@ -32,16 +32,17 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.example.musicplayer.R //imagen del folder
+import com.example.musicplayer.R // Asegúrate de que este R.drawable.folder exista
 import com.example.musicplayer.ui.components.BotonIconoCuadrado
 import com.example.musicplayer.ui.components.InputField
 import com.example.musicplayer.ui.theme.MusicPlayerTheme
 import com.example.musicplayer.viewmodel.AgregarMusicaViewModel
+import com.example.musicplayer.viewmodel.EditarEliminarMusicaViewModel
 
 
 @Composable
-fun AgregarMusicaScreen(
-    viewModel: AgregarMusicaViewModel = viewModel(),
+fun EditarEliminarMusicaScreen(
+    viewModel: EditarEliminarMusicaViewModel = viewModel(),
     navController: NavController
 ) {
     Column(
@@ -73,7 +74,7 @@ fun AgregarMusicaScreen(
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        Text(text = "Agrega tus pistas", fontSize = 20.sp)
+        Text(text = "Edita tus pistas", fontSize = 20.sp)
 
         Spacer(modifier = Modifier.height(30.dp))
 
@@ -143,7 +144,7 @@ fun AgregarMusicaScreen(
         ) {
             Button(
                 onClick = {
-                    viewModel.guardar()
+                    viewModel.guardar2()
                     // Vuelve al MenuPrincipal
                     navController.popBackStack("menu", inclusive = false)
                 },
@@ -152,6 +153,17 @@ fun AgregarMusicaScreen(
                 Text("Guardar", color = Color.Black)
             }
 
+                        Button(
+                            onClick = {
+                                viewModel.eliminar2()
+                                // Vuelve al MenuPrincipal
+                                navController.popBackStack("menu", inclusive = false)
+                            },
+                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFF08080)) // Rojo claro
+                        ) {
+                            Text("Eliminar", color = Color.Black)
+                        }
+
         }
     }
 }
@@ -159,7 +171,7 @@ fun AgregarMusicaScreen(
 @SuppressLint("ViewModelConstructorInComposable")
 @Preview(showBackground = true)
 @Composable
-fun PreviewAgregarMusicaScreen() {
+fun PreviewEditarEliminarMusicaScreen() {
     MusicPlayerTheme {
         val navController = rememberNavController()
         // Pasa un ViewModel de ejemplo al Preview

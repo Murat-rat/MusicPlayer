@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import com.example.musicplayer.data.model.Cancion
 import com.example.musicplayer.ui.theme.MusicPlayerTheme
 import com.example.musicplayer.R
+import androidx.navigation.NavController
 
 @Composable
 fun CancionCard(cancion: Cancion, onClick: () -> Unit) {
@@ -39,7 +40,7 @@ fun CancionCard(cancion: Cancion, onClick: () -> Unit) {
                 TextoLabel(cancion.artista)
                 TextoLabel(cancion.album)
                 Button(
-                    onClick = {},
+                    onClick = {}, //AQUI VA LA FUNCION PARA IR A EditarEliminarMusica
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(top = 5.dp)
