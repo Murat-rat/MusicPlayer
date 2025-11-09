@@ -9,6 +9,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.example.musicplayer.R
 
 @Composable
 fun ImagenPortada(
@@ -16,7 +17,7 @@ fun ImagenPortada(
     size: Int
 ) {
     Image(
-        painter = painterResource(portada),
+        painter = painterResource(if(portada != 0) portada else R.drawable.hamilton),
         contentDescription = "Portada de la canción",
         contentScale = ContentScale.Crop,
         modifier = Modifier

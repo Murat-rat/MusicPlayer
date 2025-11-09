@@ -38,7 +38,7 @@ fun CancionActualScreen(viewModel: CancionActualViewModel, navController: NavCon
             verticalArrangement = Arrangement.spacedBy(20.dp),
             modifier = Modifier.padding(top = 50.dp)
         ) {
-            ImagenPortada(cancion.image, 200)
+            ImagenPortada(cancion.imagen, 200)
             TextoTitulo(cancion.nombre)
             TextoSubtitulo(cancion.artista)
             TextoSubtitulo(cancion.album)

@@ -32,7 +32,7 @@ fun CancionCard(cancion: Cancion, onClick: () -> Unit, edit: () -> Unit) {
             .padding(5.dp),
             horizontalArrangement = Arrangement.spacedBy(10.dp)
         ) {
-            ImagenPortada(cancion.image, 120)
+            ImagenPortada(cancion.imagen, 120)
 
             Column(modifier = Modifier.padding(top = 5.dp)) {
                 TextoSubtitulo(cancion.nombre)

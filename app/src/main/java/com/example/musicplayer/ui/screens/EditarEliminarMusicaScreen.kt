@@ -1,6 +1,5 @@
 package com.example.musicplayer.ui.screens
 
-import android.annotation.SuppressLint
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -20,20 +19,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.example.musicplayer.R // Asegúrate de que este R.drawable.folder exista
 import com.example.musicplayer.ui.components.BotonIconoCuadrado
 import com.example.musicplayer.ui.components.ImagenPortada
 import com.example.musicplayer.ui.components.InputField
-import com.example.musicplayer.ui.theme.MusicPlayerTheme
-import com.example.musicplayer.viewmodel.AgregarMusicaViewModel
 import com.example.musicplayer.viewmodel.EditarEliminarMusicaViewModel
-
 
 @Composable
 fun EditarEliminarMusicaScreen(
@@ -146,23 +140,5 @@ fun EditarEliminarMusicaScreen(
                         }
 
         }
-    }
-}
-
-@SuppressLint("ViewModelConstructorInComposable")
-@Preview(showBackground = true)
-@Composable
-fun PreviewEditarEliminarMusicaScreen() {
-    MusicPlayerTheme {
-        val navController = rememberNavController()
-        // Pasa un ViewModel de ejemplo al Preview
-        val viewModel = AgregarMusicaViewModel()
-
-        viewModel.nombreCancion.value = "Nombre de Canción Ejemplo"
-
-        AgregarMusicaScreen(
-            viewModel = viewModel,
-            navController = navController
-        )
     }
 }

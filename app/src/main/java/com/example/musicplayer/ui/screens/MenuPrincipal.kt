@@ -35,7 +35,7 @@ fun MenuScreen(viewModel: MenuPrincipalViewModel, navController: NavController){
         .padding(top = 35.dp, bottom = 50.dp)
     ) {
         Row (
-            horizontalArrangement = Arrangement.spacedBy(72.dp),
+            horizontalArrangement = Arrangement.spacedBy(50.dp),
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.padding(all = 5.dp)
         ) {

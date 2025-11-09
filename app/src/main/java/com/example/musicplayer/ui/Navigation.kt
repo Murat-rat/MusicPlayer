@@ -1,6 +1,9 @@
 package com.example.musicplayer.ui
 
+import android.app.Application
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -31,7 +34,10 @@ fun Navigation() {
         }
         //Nuevas rutas aca
         composable("menu") {
-            val viewModel: MenuPrincipalViewModel = viewModel()
+            val context = LocalContext.current
+            val viewModel: MenuPrincipalViewModel = viewModel(
+                factory = ViewModelProvider.AndroidViewModelFactory.getInstance(context.applicationContext as Application)
+            )
             MenuScreen(viewModel = viewModel, navController = navController)
         }
 
