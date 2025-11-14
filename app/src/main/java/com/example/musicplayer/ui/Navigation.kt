@@ -61,9 +61,13 @@ fun Navigation() {
             AgregarMusicaScreen(viewModel = viewModel, navController = navController)
         }
 
-        composable("editarMusica") {
-            val viewModel: EditarEliminarMusicaViewModel = viewModel()
-            EditarEliminarMusicaScreen(viewModel = viewModel, navController = navController)
+        composable("editarMusica/{id}") { backStackEntry ->
+            val id = backStackEntry.arguments?.getString("id")?.toIntOrNull() ?: 0
+            val context = LocalContext.current
+            val viewModel: EditarEliminarMusicaViewModel = viewModel(
+                factory = ViewModelProvider.AndroidViewModelFactory.getInstance(context.applicationContext as Application)
+            )
+            EditarEliminarMusicaScreen(viewModel = viewModel, navController = navController, cancionId = id)
         }
     }
 }

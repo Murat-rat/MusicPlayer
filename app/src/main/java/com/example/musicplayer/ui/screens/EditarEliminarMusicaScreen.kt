@@ -12,10 +12,16 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -32,8 +38,15 @@ import com.example.musicplayer.viewmodel.EditarEliminarMusicaViewModel
 @Composable
 fun EditarEliminarMusicaScreen(
     viewModel: EditarEliminarMusicaViewModel = viewModel(),
-    navController: NavController
+    navController: NavController,
+    cancionId: Int
 ) {
+    var mostrarDialogoConfirmacion by remember { mutableStateOf(false) }
+
+    LaunchedEffect(cancionId) {
+        viewModel.cargarCancionPorId(cancionId)
+    }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -119,7 +132,7 @@ fun EditarEliminarMusicaScreen(
         ) {
             Button(
                 onClick = {
-                    viewModel.guardar2()
+                    viewModel.actualizar()
                     // Vuelve al MenuPrincipal
                     navController.popBackStack("menu", inclusive = false)
                 },
@@ -128,17 +141,42 @@ fun EditarEliminarMusicaScreen(
                 Text("Guardar", color = Color.Black)
             }
 
+            Button(
+                onClick = {
+                    mostrarDialogoConfirmacion = true
+                },
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFF08080)) // Rojo claro
+            ) {
+                Text("Eliminar", color = Color.Black)
+            }
+            if (mostrarDialogoConfirmacion) {
+                AlertDialog(
+                    onDismissRequest = { mostrarDialogoConfirmacion = false },
+                    title = { Text("Confirmar eliminación") },
+                    text = { Text("¿Seguro que deseas eliminar esta canción?") },
+                    confirmButton = {
                         Button(
                             onClick = {
-                                viewModel.eliminar2()
-                                // Vuelve al MenuPrincipal
+                                mostrarDialogoConfirmacion = false
+                                viewModel.eliminar()
                                 navController.popBackStack("menu", inclusive = false)
                             },
-                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFF08080)) // Rojo claro
+                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFD32F2F))
                         ) {
-                            Text("Eliminar", color = Color.Black)
+                            Text("Sí", color = Color.White)
                         }
-
+                    },
+                    dismissButton = {
+                        Button(
+                            onClick = { mostrarDialogoConfirmacion = false },
+                            colors = ButtonDefaults.buttonColors(containerColor = Color.Gray)
+                        ) {
+                            Text("No", color = Color.White)
+                        }
+                    }
+                )
+            }
         }
     }
 }
+

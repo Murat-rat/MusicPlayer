@@ -22,7 +22,7 @@ import com.example.musicplayer.ui.theme.MusicPlayerTheme
 import com.example.musicplayer.R
 
 @Composable
-fun CancionCard(cancion: Cancion, onClick: () -> Unit, edit: () -> Unit) {
+fun CancionCard(cancion: Cancion, onClick: () -> Unit, edit: (Int) -> Unit) {
     Card(modifier = Modifier
         .fillMaxWidth()
         .height(130.dp)
@@ -39,7 +39,7 @@ fun CancionCard(cancion: Cancion, onClick: () -> Unit, edit: () -> Unit) {
                 TextoLabel(cancion.artista)
                 TextoLabel(cancion.album)
                 Button(
-                    onClick = { edit() },
+                    onClick = { edit(cancion.id) },
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(top = 5.dp)

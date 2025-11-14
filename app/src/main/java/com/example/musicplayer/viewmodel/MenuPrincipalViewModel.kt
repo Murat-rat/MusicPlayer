@@ -20,14 +20,10 @@ import kotlinx.coroutines.launch
         val database = AppDatabase.getDatabase(application)
         repository = CancionRepository(database.cancionDao())
 
-        // Cargar canciones desde la base
-        obtenerCanciones()
-    }
-
-    private fun obtenerCanciones() {
-        viewModelScope.launch {
-            val canciones = repository.obtenerCanciones()
-            _cancion.value = canciones
+        viewModelScope.launch{
+            repository.obtenerCanciones().collect { canciones ->
+                _cancion.value = canciones
+            }
         }
     }
 

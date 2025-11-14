@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
 import com.example.musicplayer.data.model.Cancion
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface CancionDao {
@@ -13,7 +14,10 @@ interface CancionDao {
     suspend fun insertarCancion(cancion: Cancion)
 
     @Query("SELECT * FROM canciones")
-    suspend fun obtenerCanciones(): List<Cancion>
+    fun obtenerCanciones(): Flow<List<Cancion>>
+
+    @Query("SELECT * FROM canciones WHERE id = :id LIMIT 1")
+    suspend fun obtenerCancionPorId(id: Int): Cancion?
 
     @Update
     suspend fun actualizarCancion(cancion: Cancion)
